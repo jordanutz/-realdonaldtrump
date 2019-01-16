@@ -5,53 +5,60 @@ import Header from './Components/Header/Header'
 import Banner from './Components/Banner/Banner'
 import Stats from './Components/Stats/Stats'
 import Profile from './Components/Profile/Profile'
+import Footer from './Components/Footer/Footer'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      jokes: [],
-      joke: null
+      tweets: [],
+      tweet: null
     }
   }
 
   componentDidMount () {
-    this.newJoke()
+    this.newTweet()
   }
 
-  newJoke = () => {
+  postTweet = (tweet) => {
+    const feed = [...this.state.tweets]
+    feed.push(tweet)
+    this.setState({
+      tweets: feed,
+    })
+    this.newTweet()
+  }
+
+  newTweet = () => {
     axios.get('https://api.whatdoestrumpthink.com/api/v1/quotes/random').then( res => {
-      const feed = [...this.state.jokes]
-      feed.push(res.data.message)
+      console.log(res)
       this.setState({
-        joke: res.data.message,
-        jokes: feed
+        tweet: res.data.message
       })
     }).catch(error => {
       console.log(error)
     })
   }
 
+  resetTweets = () => {
+    let emptyArray = []
+    this.setState({
+      tweets: emptyArray
+    })
+  }
+
 
   render() {
 
-    console.log(this.state.jokes)
-    let trumpFeed = this.state.jokes.map( (joke, index) => {
-      return (
-        <div className="FeedJoke">
-          <h2 key={index}>{joke}</h2>
-        </div>
-      )
-    })
+    console.log(this.state.tweet)
 
     return (
       <div className="App">
         <Header />
         <Banner />
-        <Stats jokes={this.state.jokes}/>
-        <Profile />
-          <button onClick={this.newJoke}>Make Joke</button>
-          {trumpFeed}
+        <Stats tweets={this.state.tweets}/>
+        <Profile reset={this.resetTweets} tweet={this.state.tweet} newTweet={this.newTweet} tweets={this.state.tweets} postTweet={this.postTweet}/>
+        <Footer />
       </div>
     );
   }
