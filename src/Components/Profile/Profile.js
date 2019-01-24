@@ -30,8 +30,8 @@ class Profile extends Component {
           </div>
 
           <div className="FeedButtons">
-            <button onClick={this.props.newTweet}>Tweet</button>
-            <button onClick={() => this.props.postTweet(this.props.tweet)}>Post</button>
+            <button onClick={this.props.newTweet}>Generate</button>
+            <button onClick={() => this.props.postTweet(this.props.tweet)}>Tweet</button>
             <button onClick={() => this.props.reset()}>Reset</button>
           </div>
 

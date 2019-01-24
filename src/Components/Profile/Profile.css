@@ -2,7 +2,7 @@
   background: #e6ecf0;
   width: 100%;
   height: auto;
-  padding: 4rem;
+  padding: 5rem;
   display: flex;
   justify-content: space-evenly;
   margin: 0 auto;
@@ -33,7 +33,7 @@
 }
 
 .TweetProfile {
-  width: 50%;
+  width: 600px;
   height: auto;
   background: white;
   padding: 1rem;
@@ -72,5 +72,4 @@ button:hover {
 .TweetType h2 {
   font-weight: 400;
   text-align: center;
-
 }

@@ -7,7 +7,7 @@ const Tweet = (props) => {
   return (
     <div className="Tweet">
       <div className="TweetPhoto">
-        <img src={Trump} />
+        <img src={Trump} alt="Donnie" />
       </div>
 
       <div className="TweetDetails">

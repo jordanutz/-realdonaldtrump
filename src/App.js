@@ -51,6 +51,7 @@ class App extends Component {
   render() {
 
     console.log(this.state.tweet)
+    console.log(this.state.tweets)
 
     return (
       <div className="App">
