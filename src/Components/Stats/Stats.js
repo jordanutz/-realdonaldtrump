@@ -2,8 +2,7 @@ import React from 'react'
 import './Stats.css'
 
 const Stats = (props) => {
-
-
+  
   return (
     <section>
       <div className="Stats">

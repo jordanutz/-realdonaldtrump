@@ -21,17 +21,19 @@ class App extends Component {
   }
 
   postTweet = (tweet) => {
-    const feed = [...this.state.tweets]
-    feed.push(tweet)
-    this.setState({
-      tweets: feed,
+    console.log(tweet)
+    axios.post('/api/tweets', {tweet}).then(res => {
+      console.log(res)
+      this.setState({
+        tweets: res.data
+      })
     })
     this.newTweet()
   }
 
   newTweet = () => {
     axios.get('https://api.whatdoestrumpthink.com/api/v1/quotes/random').then( res => {
-      console.log(res)
+      // console.log(res)
       this.setState({
         tweet: res.data.message
       })
@@ -50,8 +52,8 @@ class App extends Component {
 
   render() {
 
-    console.log(this.state.tweet)
-    console.log(this.state.tweets)
+    // console.log(this.state.tweet)
+    // console.log(this.state.tweets)
 
     return (
       <div className="App">

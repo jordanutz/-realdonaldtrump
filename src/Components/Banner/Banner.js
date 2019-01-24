@@ -5,7 +5,6 @@ const Banner = (props) => {
   return (
     <div className="Banner">
       <div className="Icon"></div>
-
     </div>
 
   )

@@ -2,11 +2,10 @@ import React, {Component} from 'react'
 import './Profile.css'
 import Tweet from '../Tweet/Tweet'
 
-
 class Profile extends Component {
 
   render () {
-    console.log(this.props)
+    // console.log(this.props)
 
     let trumpFeed = this.props.tweets.map( (tweet, index) => {
       return (
