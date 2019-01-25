@@ -6,7 +6,7 @@ app.use(bodyParser.json())
 
 const controller = require('./tweets_controller')
 
-
+app.delete('/api/tweets', controller.deleteAll)
 app.post('/api/tweets', controller.createTweet)
 
 PORT = 1993;

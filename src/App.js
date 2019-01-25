@@ -43,24 +43,32 @@ class App extends Component {
   }
 
   resetTweets = () => {
-    let emptyArray = []
-    this.setState({
-      tweets: emptyArray
+    axios.delete('/api/tweets').then(res => {
+      console.log(res.data)
+      this.setState({
+        tweets: res.data
+      })
     })
   }
 
-
   render() {
-
     // console.log(this.state.tweet)
     // console.log(this.state.tweets)
+
+    const {tweets, tweet} = this.state
+    const {resetTweets, newTweet, postTweet} = this
 
     return (
       <div className="App">
         <Header />
         <Banner />
-        <Stats tweets={this.state.tweets}/>
-        <Profile reset={this.resetTweets} tweet={this.state.tweet} newTweet={this.newTweet} tweets={this.state.tweets} postTweet={this.postTweet}/>
+        <Stats tweets={tweets}/>
+        <Profile
+          reset={resetTweets}
+          tweet={tweet}
+          newTweet={newTweet}
+          tweets={tweets}
+          postTweet={postTweet}/>
         <Footer />
       </div>
     );

@@ -7,7 +7,9 @@ class Profile extends Component {
   render () {
     // console.log(this.props)
 
-    let trumpFeed = this.props.tweets.map( (tweet, index) => {
+    const {tweets, tweet, newTweet, postTweet, reset} = this.props
+
+    let trumpFeed = tweets.map( (tweet, index) => {
       return (
         <div className="Feed">
           <Tweet key={index} tweet={tweet}/>
@@ -25,13 +27,13 @@ class Profile extends Component {
         <div className="TweetProfile">
           <div className="TweetType">
             <h4>What's on your mind?</h4>
-            <h2>{this.props.tweet} </h2>
+            <h2>{tweet}</h2>
           </div>
 
           <div className="FeedButtons">
-            <button onClick={this.props.newTweet}>Generate</button>
-            <button onClick={() => this.props.postTweet(this.props.tweet)}>Tweet</button>
-            <button onClick={() => this.props.reset()}>Reset</button>
+            <button onClick={newTweet}>Generate</button>
+            <button onClick={() => postTweet(tweet)}>Tweet</button>
+            <button onClick={() => reset()}>Reset</button>
           </div>
 
           {trumpFeed}
