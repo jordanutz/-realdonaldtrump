@@ -37,14 +37,12 @@ class App extends Component {
       this.setState({
         tweet: res.data.message
       })
-    }).catch(error => {
-      console.log(error)
     })
   }
 
   resetTweets = () => {
     axios.delete('/api/tweets').then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       this.setState({
         tweets: res.data
       })
